@@ -1,10 +1,21 @@
 #!/bin/bash
 
+# Save root directory
+ROOT_DIR=$(pwd)
+
 envs=("prod" "staging" "qa")
 
 for env in "${envs[@]}"; do
+  ENV_DIR="$ROOT_DIR/environment/$env"
+
+  if [ ! -d "$ENV_DIR" ]; then
+    echo "❌ Environment directory $ENV_DIR does not exist. Skipping $env."
+    continue
+  fi
+
   echo "📦 Switching to $env environment directory..."
-  cd "./environment/$env" || exit 1
+  cd "$ENV_DIR" || exit 1
+
 
   # Terraform init
   echo "🔍 Initializing Terraform..."
