@@ -42,3 +42,5 @@ for env in "${envs[@]}"; do
   else
       echo "❌ Deployment for $env cancelled."
   fi
+
+  done
