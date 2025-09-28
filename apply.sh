@@ -3,11 +3,10 @@
 envs=("prod" "staging" "qa")
 
 for env in "${envs[@]}"; do
-  echo "📦 Processing environment: $env"
+  echo "📦 Switching to $env environment directory..."
+  cd "./environment/$env" || exit 1
 
-  tfvars_file="environment/$env/${env}.tfvars"
-
-  # Terraform init from root
+  # Terraform init
   echo "🔍 Initializing Terraform..."
   terraform init -reconfigure
 
@@ -17,11 +16,12 @@ for env in "${envs[@]}"; do
   echo "📝 Formatting Terraform files..."
   terraform fmt -recursive
 
-  # Workspace list & switch
+  # Workspace list
   echo "🔢 Listing available workspaces..."
   terraform workspace list
 
   # Plan
+  tfvars_file="${env}.tfvars"
   echo "📄 Creating plan for $env..."
   terraform plan -var-file="$tfvars_file" -out=tfplan.out
 
@@ -43,4 +43,6 @@ for env in "${envs[@]}"; do
       echo "❌ Deployment for $env cancelled."
   fi
 
+  # Go back to root
+  cd ../../
 done
