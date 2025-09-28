@@ -42,7 +42,3 @@ for env in "${envs[@]}"; do
   else
       echo "❌ Deployment for $env cancelled."
   fi
-
-  # Go back to root
-  cd ../../
-done
