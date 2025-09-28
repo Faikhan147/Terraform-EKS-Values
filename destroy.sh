@@ -42,5 +42,3 @@ if [ "$choice" == "yes" ]; then
 else
   echo "❌ Destroy for $env cancelled."
 fi
-
-cd ../../
