@@ -29,8 +29,11 @@ for env in "${envs[@]}"; do
       echo "💣 Destroying resources in $env using $tfvars_file..."
       terraform destroy -var-file="$tfvars_file" -auto-approve
 
-      # Inform about KMS behavior
-      echo "🔒 KMS keys will be disabled and scheduled for deletion (10 days)."
+# Inform about KMS behavior
+ # only show KMS message if something was actually destroyed
+  if echo "$destroy_output" | grep -q "Destroy complete! Resources: [1-9]"; then
+    echo "🔒 KMS keys will be disabled and scheduled for deletion (10 days)."
+  fi
 
       echo "📊 Showing the state after destroy..."
       terraform show
