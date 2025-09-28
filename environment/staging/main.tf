@@ -1,3 +1,17 @@
+provider "aws" {
+  region = var.region
+}
+
+terraform {
+  required_version = ">= 1.5.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.14.0"
+    }
+  }
+}
+
 module "kms" {
   source      = "../../modules/kms"
   env         = var.env
