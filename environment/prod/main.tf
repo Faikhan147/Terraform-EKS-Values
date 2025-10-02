@@ -13,13 +13,13 @@ terraform {
 }
 
 
-module "kms" {
-  source      = "../../modules/kms"
+module "iam" {
+  source      = "../../modules/iam"
   env         = var.env
 }
 
-module "iam" {
-  source      = "../../modules/iam"
+module "kms" {
+  source      = "../../modules/kms"
   env         = var.env
 }
 
