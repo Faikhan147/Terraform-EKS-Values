@@ -21,9 +21,10 @@ for env in "${envs[@]}"; do
   echo "🔍 Initializing Terraform..."
   terraform init -reconfigure
 
-  # Validate & fmt
+  # Terraform Validate
   echo "✅ Validating configuration..."
   terraform validate
+  
   echo "📝 Formatting Terraform files..."
   terraform fmt -recursive
 
