@@ -1,3 +1,3 @@
-vpc_id = "vpc-0ec584a166c9065bc"
+vpc_id = "vpc-0efc70c5457a9fa4f"
 region = "us-east-1"
 env = "staging"
