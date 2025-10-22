@@ -1,3 +1,3 @@
-vpc_id = "vpc-0f5fb1d69c7087e37"
+vpc_id = "vpc-045d21b8abbb29fa3"
 region = "ap-southeast-2"
 env = "prod"
