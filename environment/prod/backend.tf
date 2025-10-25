@@ -2,7 +2,7 @@
 
 terraform {
   backend "s3" {
-    bucket         = "terraform-backend-all-envs"
+    bucket         = "terraform-backend-all-environments"
     key            = "eks/values/prod/terraform.tfstate"
     region         = "ap-southeast-2"
     encrypt        = true
